@@ -13,13 +13,17 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("message", (data) => {
-    io.emit("message", data);
+    io.emit("message", {
+      data: data,
+      isJoin: false,
+    });
   });
 
   socket.on("newUserJoin", (data) => {
-    users.push(date);
+    users.push(data);
     io.emit("newUserJoin", {
       data: data,
+      isJoin: true,
       length: users.length,
     });
   });
