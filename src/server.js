@@ -27,6 +27,8 @@ io.on("connection", (socket) => {
       length: users.length,
     });
   });
+
+  socket.on("leaveChat", (data) => {});
 });
 
 server.listen(PORT, () => {
